@@ -9,7 +9,7 @@ public class BasePage {
     private static final Logger LOG = LoggerFactory.getLogger(BasePage.class);
     public static WebDriver driver;
 
-    public static void setUp(){
+    public static void setUp() {
         LOG.info("Start test");
         System.setProperty("webdriver.chrome.driver", "C://Webdrivers/chromedriver110.exe");
         driver = new ChromeDriver();
@@ -20,7 +20,7 @@ public class BasePage {
         driver.manage().window().maximize();
     }
 
-    public static void tearDown(){
+    public static void tearDown() {
         LOG.info("Close the browser");
         driver.quit();
     }
