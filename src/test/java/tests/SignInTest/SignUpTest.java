@@ -20,10 +20,14 @@ public class SignUpTest extends BaseTest {
 
         LOG.info("Navigate to Sign Up Page");
         driver.get(newURL);
+
+        LOG.info("Verify UI elements");
         Assert.assertTrue(signInPage.isLogoDisplayed(), "Logo is not displayed");
         Assert.assertTrue(signInPage.isEmailFieldDisplayed(), "Email is not displayed");
         Assert.assertTrue(signInPage.isSignInButtonDisplayed(), "Sign In button is not displayed");
         Assert.assertTrue(signInPage.isSkipSignInButtonDisplayed(), "Skip Sign button is not displayed");
+
+        LOG.info("Navigate to Sign Up Page");
         signInPage.clickSignInButton();
 
         LOG.info("Type in email and password");
@@ -35,6 +39,12 @@ public class SignUpTest extends BaseTest {
 
         LOG.info("Verify if Error message is displayed");
         Assert.assertTrue(signInPage.isErrorMsgDisplayed(), "Error message is not displayed");
+
+        LOG.info("Navigate back");
+        signInPage.clickBack();
+
+        LOG.info("Click Skip SignIn button");
+        signInPage.clickSkipSignInButton();
 
     }
 }
