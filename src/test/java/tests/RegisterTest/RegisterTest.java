@@ -22,6 +22,10 @@ public class RegisterTest extends BaseTest {
         String address = "lalalala";
         String email = "grupa3@automation.com";
         String phone = "0123456789";
+        String language = "Romanian";
+        String skills = "Java";
+        String country = "Australia";
+        String year = "1982";
 
 
         LOG.info("Checl title");
@@ -44,6 +48,18 @@ public class RegisterTest extends BaseTest {
         registerPage.clickCricket();
         registerPage.clickMovies();
         registerPage.clickHockey();
+        LOG.info("Select language");
+        registerPage.selectLanguage(language);
+        LOG.info("Select skills");
+        registerPage.selectSkills(skills);
+        LOG.info("Select country");
+        registerPage.typeInCountry(country);
+        LOG.info("Select date of birth");
+        registerPage.selectYear(year);
+
+
+
+
 
     }
 

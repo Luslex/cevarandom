@@ -1,6 +1,8 @@
 package pages.RegisterPage;
 
 import org.openqa.selenium.By;
+
+import org.openqa.selenium.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
@@ -9,6 +11,7 @@ import pages.BasePage;
 public class RegisterPage extends BasePage {
     public static final Logger LOG = LoggerFactory.getLogger(RegisterPage.class);
     public static RegisterPage instance;
+
 
     private By title = By.xpath("//div[h1='Automation Demo Site ']");
     private By register = By.xpath("//div[h2='Register']");
@@ -22,6 +25,21 @@ public class RegisterPage extends BasePage {
     private By cricket = By.xpath("//input[@id='checkbox1']");
     private By movies = By.xpath("//input[@id='checkbox2']");
     private By hockey = By.xpath("//input[@id='checkbox3']");
+    private By languageField = By.id("msdd");
+    private By skillsField = By.id("Skills");
+    private By outside = By.xpath("//body[@ng-controller='FormCtrl']");
+    private By countryList = By.xpath("//span[@class='select2-selection select2-selection--single']");
+    private By countryField = By.xpath("//input[@class='select2-search__field']");
+    private By yearList = By.xpath("//select[@placeholder='Year']");
+    private By monthList = By.xpath("//select[@placeholder='Month']");
+    private By dayList = By.xpath("//select[@placeholder='Day']");
+
+
+
+    String selectLanguage= "//a[contains(text(), '%s')]";
+    String selectSkills = "//option[@value='%s']";
+    String selectYear = "//option[@value='%s']";
+
 
 
 
@@ -91,5 +109,32 @@ public class RegisterPage extends BasePage {
         LOG.info("Click the 'Hockey' box");
         driver.findElement(hockey).click();
     }
+
+    public void selectLanguage(String language) {
+        LOG.info("Select languages");
+        driver.findElement(languageField).click();
+        driver.findElement(By.xpath(String.format(selectLanguage, language))).click();
+        driver.findElement(outside).click();
+    }
+
+    public void selectSkills(String skills){
+        LOG.info("Select skills");
+        driver.findElement(skillsField).click();
+        driver.findElement(By.xpath(String.format(selectSkills, skills))).click();
+    }
+
+    public void typeInCountry(String country) {
+        LOG.info("Choose country");
+        driver.findElement(countryList).click();
+        driver.findElement(countryField).sendKeys(country);
+        driver.findElement(countryField).sendKeys(Keys.ENTER);
+    }
+
+    public void selectYear(String year) {
+        LOG.info("Choose year");
+        driver.findElement(yearList).click();
+        driver.findElement(By.xpath(String.format(selectYear, year))).click();
+    }
+
 
 }
