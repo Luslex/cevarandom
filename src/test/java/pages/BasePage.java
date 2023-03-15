@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
@@ -16,8 +17,9 @@ public class BasePage {
         String url = "https://demo.automationtesting.in/Index.html";
         driver.get(url);
 
-        LOG.info("Open browser maximize");
-        driver.manage().window().maximize();
+        LOG.info("Open browser in specified dimension");
+        Dimension dimension = new Dimension(1366, 768);
+        driver.manage().window().setSize(dimension);;
     }
 
     public static void tearDown() {
@@ -35,6 +37,14 @@ public class BasePage {
             return baseURL.replace("Index.html", "");
         }
         return baseURL;
+    }
+
+    public static void sleep(long ms) {
+        try {
+            Thread.sleep(ms);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -26,6 +26,9 @@ public class RegisterTest extends BaseTest {
         String skills = "Java";
         String country = "Australia";
         String year = "1982";
+        String month = "August";
+        String day = "31";
+        String password ="123456789";
 
 
         LOG.info("Checl title");
@@ -56,6 +59,17 @@ public class RegisterTest extends BaseTest {
         registerPage.typeInCountry(country);
         LOG.info("Select date of birth");
         registerPage.selectYear(year);
+        registerPage.selectMonth(month);
+        registerPage.selectDay(day);
+        LOG.info("Type in password");
+        registerPage.typeInPassword(password);
+//        LOG.info("Click the 'Choose File' button");
+//        registerPage.clickChooseFileButton();
+
+        LOG.info("Click the 'Refresh' button");
+        registerPage.clickRefreshButton();
+        LOG.info("Click the 'Submit' button");
+        registerPage.clickSubmitButton();
 
 
 

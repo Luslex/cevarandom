@@ -3,6 +3,7 @@ package pages.RegisterPage;
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
@@ -33,12 +34,19 @@ public class RegisterPage extends BasePage {
     private By yearList = By.xpath("//select[@placeholder='Year']");
     private By monthList = By.xpath("//select[@placeholder='Month']");
     private By dayList = By.xpath("//select[@placeholder='Day']");
+    private By passwordField = By.id("firstpassword");
+    private By confirmPasswordField = By.id("secondpassword");
+    private By submitButton = By.id("submitbtn");
+    private By refreshButton = By.id("Button1");
+    private By chooseFileButton = By.xpath("//input[@id='imagesrc']");
 
 
 
     String selectLanguage= "//a[contains(text(), '%s')]";
-    String selectSkills = "//option[@value='%s']";
+//    String selectSkills = "//option[@value='%s']";
     String selectYear = "//option[@value='%s']";
+    String selectMonth = "//option[@value='%s']";
+    String selectDay = "//option[@value='%s']";
 
 
 
@@ -119,8 +127,10 @@ public class RegisterPage extends BasePage {
 
     public void selectSkills(String skills){
         LOG.info("Select skills");
-        driver.findElement(skillsField).click();
-        driver.findElement(By.xpath(String.format(selectSkills, skills))).click();
+//        driver.findElement(skillsField).click();
+//        driver.findElement(By.xpath(String.format(selectSkills, skills))).click();
+        Select newSkill = new Select(driver.findElement(skillsField));//cand ai optiunea de select la locator
+        newSkill.selectByValue(skills);//inauntru se punde Stringul
     }
 
     public void typeInCountry(String country) {
@@ -135,6 +145,42 @@ public class RegisterPage extends BasePage {
         driver.findElement(yearList).click();
         driver.findElement(By.xpath(String.format(selectYear, year))).click();
     }
+
+    public void selectMonth(String month) {
+        LOG.info("Choose year");
+        driver.findElement(monthList).click();
+        driver.findElement(By.xpath(String.format(selectMonth, month))).click();
+    }
+
+    public void selectDay(String day) {
+        LOG.info("Choose year");
+        driver.findElement(dayList).click();
+        driver.findElement(By.xpath(String.format(selectDay, day))).click();
+    }
+
+    public void typeInPassword(String password) {
+        LOG.info("Type in password");
+        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(confirmPasswordField).sendKeys(password);
+    }
+
+    public void clickSubmitButton() {
+        LOG.info("Click the submit button");
+        driver.findElement(submitButton).click();
+    }
+
+    public void clickRefreshButton() {
+        LOG.info("Click the 'Refresh' button");
+        driver.findElement(refreshButton).click();
+    }
+
+ //   public void clickChooseFileButton() {
+ //       LOG.info("Click the 'Choose File' button");
+ //       driver.findElement(chooseFileButton).click();
+    //  }
+// sleep(5000);//5 secunde de asteptat
+//incearca cu webelement "webelement().driver." si trebuie sa dau sendkeys pt path
+
 
 
 }
