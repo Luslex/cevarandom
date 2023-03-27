@@ -1,8 +1,8 @@
 package pages.RegisterPage;
 
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,14 +41,11 @@ public class RegisterPage extends BasePage {
     private By chooseFileButton = By.xpath("//input[@id='imagesrc']");
 
 
-
-    String selectLanguage= "//a[contains(text(), '%s')]";
-//    String selectSkills = "//option[@value='%s']";
+    String selectLanguage = "//a[contains(text(), '%s')]";
+    //    String selectSkills = "//option[@value='%s']";
     String selectYear = "//option[@value='%s']";
     String selectMonth = "//option[@value='%s']";
     String selectDay = "//option[@value='%s']";
-
-
 
 
     private RegisterPage() {
@@ -61,12 +58,12 @@ public class RegisterPage extends BasePage {
         return instance;
     }
 
-    public boolean isTitleDisplayed(){
+    public boolean isTitleDisplayed() {
         LOG.info("Verify if title is displayed");
         return driver.findElement(title).isDisplayed();
     }
 
-    public boolean isRegisterDisplayed(){
+    public boolean isRegisterDisplayed() {
         LOG.info("Verify if Register is displayed");
         return driver.findElement(register).isDisplayed();
     }
@@ -105,14 +102,17 @@ public class RegisterPage extends BasePage {
         LOG.info("Click Female Tick");
         driver.findElement(femaleTick).click();
     }
+
     public void clickCricket() {
         LOG.info("Click the 'Cricket' box");
         driver.findElement(cricket).click();
     }
+
     public void clickMovies() {
         LOG.info("Click the 'Movies' box");
         driver.findElement(movies).click();
     }
+
     public void clickHockey() {
         LOG.info("Click the 'Hockey' box");
         driver.findElement(hockey).click();
@@ -125,7 +125,7 @@ public class RegisterPage extends BasePage {
         driver.findElement(outside).click();
     }
 
-    public void selectSkills(String skills){
+    public void selectSkills(String skills) {
         LOG.info("Select skills");
 //        driver.findElement(skillsField).click();
 //        driver.findElement(By.xpath(String.format(selectSkills, skills))).click();
@@ -164,6 +164,13 @@ public class RegisterPage extends BasePage {
         driver.findElement(confirmPasswordField).sendKeys(password);
     }
 
+    public void clickChooseFileButton() {
+        LOG.info("Set image path");
+        WebElement upload_file = driver.findElement(chooseFileButton);
+        upload_file.sendKeys("C:/Users/Lus/Pictures/test.jpg");
+        sleep(5000);
+    }
+
     public void clickSubmitButton() {
         LOG.info("Click the submit button");
         driver.findElement(submitButton).click();
@@ -174,13 +181,9 @@ public class RegisterPage extends BasePage {
         driver.findElement(refreshButton).click();
     }
 
- //   public void clickChooseFileButton() {
- //       LOG.info("Click the 'Choose File' button");
- //       driver.findElement(chooseFileButton).click();
-    //  }
+
 // sleep(5000);//5 secunde de asteptat
 //incearca cu webelement "webelement().driver." si trebuie sa dau sendkeys pt path
-
 
 
 }

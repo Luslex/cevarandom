@@ -12,14 +12,14 @@ public class BasePage {
 
     public static void setUp() {
         LOG.info("Start test");
-        System.setProperty("webdriver.chrome.driver", "C://Webdrivers/chromedriver110.exe");
+        System.setProperty("webdriver.chrome.driver", "C://Webdrivers/chromedriver111.exe");
         driver = new ChromeDriver();
         String url = "https://demo.automationtesting.in/Index.html";
         driver.get(url);
 
         LOG.info("Open browser in specified dimension");
         Dimension dimension = new Dimension(1366, 768);
-        driver.manage().window().setSize(dimension);;
+        driver.manage().window().setSize(dimension);
     }
 
     public static void tearDown() {
@@ -42,7 +42,7 @@ public class BasePage {
     public static void sleep(long ms) {
         try {
             Thread.sleep(ms);
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

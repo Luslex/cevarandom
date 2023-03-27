@@ -9,10 +9,9 @@ import tests.BaseTest;
 import static pages.BasePage.driver;
 import static pages.BasePage.getBaseURL;
 
-
-public class RegisterTest extends BaseTest {
+public class RefreshTest extends BaseTest {
     private String newURL = getBaseURL() + "Register.html";
-    private static final Logger LOG = LoggerFactory.getLogger(RegisterTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RefreshTest.class);
 
     @Test
     public void register() {
@@ -65,11 +64,8 @@ public class RegisterTest extends BaseTest {
         registerPage.typeInPassword(password);
         LOG.info("Set image path");
         registerPage.clickChooseFileButton();
-
-        LOG.info("Click the 'Submit' button");
-        registerPage.clickSubmitButton();
-
+        LOG.info("Click the 'Refresh' button");
+        registerPage.clickRefreshButton();
 
     }
-
 }
