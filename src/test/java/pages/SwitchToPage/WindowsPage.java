@@ -11,7 +11,8 @@ public class WindowsPage extends BasePage {
     public static final Logger LOG = LoggerFactory.getLogger(WindowsPage.class);
     public static WindowsPage instance;
 
-    private By tabWindow = By.xpath("//a[@href='http://www.selenium.dev']");
+    private By tabWindow = By.xpath("//a[@href='#Tabbed']");
+    private By windowBtn = By.xpath("//a[@href='http://www.selenium.dev']");//div[@id='Tabbed']/a/button[@class='btn btn-info'] se poate si asa si e mai corect
     private By tabSeparate = By.xpath("//a[@href='#Seperate']");
     private By separateBtn = By.xpath("//button[@onclick='newwindow()']");
     private By tabMultiple = By.xpath("//a[@href='#Multiple']");
@@ -32,37 +33,50 @@ public class WindowsPage extends BasePage {
     public void clickNewTabWindow() {
         LOG.info("Click new tab window btn");
         driver.findElement(tabWindow).click();
-        sleep(2000);
-        ArrayList<String> switchTabs= new ArrayList<String> (driver.getWindowHandles());
+        driver.findElement(windowBtn).click();
+
+        ArrayList<String> switchTabs= new ArrayList<> (driver.getWindowHandles());
         driver.switchTo().window(switchTabs.get(1));
         driver.close();
         driver.switchTo().window(switchTabs.get(0));
-        sleep(2000);
+
     }
 
     public void clickSeparateWindow() {
         LOG.info("Click Separate window btn");
         driver.findElement(tabSeparate).click();
         driver.findElement(separateBtn).click();
-        sleep(2000);
-        ArrayList<String> switchTabs= new ArrayList<String> (driver.getWindowHandles());
+
+        ArrayList<String> switchTabs= new ArrayList<> (driver.getWindowHandles());
         driver.switchTo().window(switchTabs.get(1));
         driver.close();
         driver.switchTo().window(switchTabs.get(0));
-        sleep(2000);
+
     }
 
     public void clickMultipleWindow() {
         LOG.info("Click Multiple window btn");
         driver.findElement(tabMultiple).click();
         driver.findElement(multipleBtn).click();
-        sleep(2000);
-        ArrayList<String> switchTabs= new ArrayList<String> (driver.getWindowHandles());
+
+        ArrayList<String> switchTabs= new ArrayList<> (driver.getWindowHandles());
         driver.switchTo().window(switchTabs.get(2));
         driver.close();
         driver.switchTo().window(switchTabs.get(1));
         driver.close();
         driver.switchTo().window(switchTabs.get(0));
-        sleep(2000);
+
     }
+    public void switchToNewTabWindow(){
+        LOG.info("Switch to new tab windows");
+        String originalWindow = driver.getWindowHandle();
+        for(String windowHandle : driver.getWindowHandles()){
+            if (!originalWindow.contentEquals(windowHandle)){
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+        driver.switchTo().window(originalWindow);
+    }
+
 }

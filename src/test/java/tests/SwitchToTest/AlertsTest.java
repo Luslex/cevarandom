@@ -16,12 +16,14 @@ public class AlertsTest extends BaseTest {
     public void alerts() {
         driver.get(newURL);
 
-        LOG.info("Click alert box button");
+        String nume = "Andrei";
+
+        LOG.info("Trigger Alert And Tape Ok Button");
         alertsPage.clickAlertBox();
-        LOG.info("Navigate the confirm box page");
+        LOG.info("Trigger Alert And Tape Cancel Button");
         alertsPage.clickConfirmBox();
-        LOG.info("Navigate the text box page");
-        alertsPage.clickTextBox();
+        LOG.info("Trigger Alert And Send Data");
+        alertsPage.clickTextBox(nume);
 
     }
 }

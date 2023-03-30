@@ -3,11 +3,17 @@
 <suite name="testng" verbose="1">
     <test name="PositiveTest">
         <classes>
-           <class name="tests.SignInTest.SignInTest">
-           </class>
+            <class name="tests.SignInTest.SignInTest">
+            </class>
             <class name="tests.SignInTest.SignUpTest">
             </class>
             <class name="tests.RegisterTest.RegisterTest">
+            </class>
+            <class name="tests.SwitchToTest.AlertsTest">
+            </class>
+            <class name="tests.SwitchToTest.WindowsTest">
+            </class>
+            <class name="tests.SwitchToTest.FramesTest">
             </class>
         </classes>
     </test>

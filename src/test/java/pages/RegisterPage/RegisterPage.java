@@ -168,7 +168,7 @@ public class RegisterPage extends BasePage {
         LOG.info("Set image path");
         WebElement upload_file = driver.findElement(chooseFileButton);
         upload_file.sendKeys("C:/Users/Lus/Pictures/test.jpg");
-        sleep(5000);
+
     }
 
     public void clickSubmitButton() {

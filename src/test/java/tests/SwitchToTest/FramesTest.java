@@ -16,7 +16,12 @@ public class FramesTest extends BaseTest {
     public void frames() {
         driver.get(newURL);
 
+        String random = "aafdadf";
 
+        LOG.info("Write in frame");
+        framesPage.sendKeysInSingleFrame(random);
+        LOG.info("Write in multiple frame");
+        framesPage.sendKeysInMultipleFrame(random);
 
 
     }

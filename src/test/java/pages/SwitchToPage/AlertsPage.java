@@ -13,6 +13,7 @@ public class AlertsPage extends BasePage {
     public static AlertsPage instance;
 
 
+    private By alertOkBtn = By.xpath("//a[@href='#OKTab']");
     private By alertBox = By.xpath("//button[@class='btn btn-danger']");
     private By confirmBoxTab = By.xpath("//a[@href='#CancelTab']");
     private By confirmBoxBtn = By.xpath("//button[@class='btn btn-primary']");
@@ -32,9 +33,10 @@ public class AlertsPage extends BasePage {
 
     public void clickAlertBox() {
         LOG.info("Click alert box button");
+        driver.findElement(alertOkBtn).click();
         driver.findElement(alertBox).click();
         driver.switchTo().alert().accept();
-        sleep(2000);
+
     }
 
     public void clickConfirmBox() {
@@ -42,23 +44,23 @@ public class AlertsPage extends BasePage {
         driver.findElement(confirmBoxTab).click();
         driver.findElement(confirmBoxBtn).click();
         driver.switchTo().alert().accept();
-        sleep(2000);
+
         driver.findElement(confirmBoxBtn).click();
         driver.switchTo().alert().dismiss();
-        sleep(2000);
+
     }
 
-    public void clickTextBox() {
+    public void clickTextBox(String nume) {
         LOG.info("Click text box button");
         driver.findElement(textBoxTab).click();
         driver.findElement(textBoxBtn).click();
-        driver.switchTo().alert().sendKeys("Andrei");
+        driver.switchTo().alert().sendKeys(nume);
         driver.switchTo().alert().accept();
-        sleep(2000);
+
         driver.findElement(textBoxBtn).click();
-        driver.switchTo().alert().sendKeys("Andrei");
-        sleep(2000);
+        driver.switchTo().alert().sendKeys(nume);
+
         driver.switchTo().alert().dismiss();
-        sleep(2000);
+
     }
 }
